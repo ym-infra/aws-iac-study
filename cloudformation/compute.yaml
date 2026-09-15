@@ -16,3 +16,17 @@ Resources:
       Tags:
         - Key: Name
           Value: aws-iac-study-alb-sg
+
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for EC2
+      VpcId: !ImportValue aws-iac-study-vpc-id
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !Ref ALBSecurityGroup
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-ec2-sg
