@@ -55,5 +55,20 @@ Resources:
         - Key: Name
           Value: aws-iac-study-ec2-c
 
+  ApplicationLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: aws-iac-study-alb
+      Scheme: internet-facing
+      Type: application
+      Subnets:
+        - !ImportValue aws-iac-study-public-subnet-a-id
+        - !ImportValue aws-iac-study-public-subnet-c-id
+      SecurityGroups:
+        - !Ref ALBSecurityGroup
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-alb
+
 
     
