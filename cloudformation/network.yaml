@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 
-Description: Create VPC for aws-iac-study
+Description: Create network infrastructure for aws-iac-study
 
 Resources:
   MainVPC:
@@ -25,3 +25,43 @@ Resources:
     Properties:
       VpcId: !Ref MainVPC
       InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MainVPC
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: ap-northeast-1a
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-public-subnet-a
+
+  PublicSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MainVPC
+      CidrBlock: 10.0.1.0/24
+      AvailabilityZone: ap-northeast-1c
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-public-subnet-c
+
+  PrivateSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MainVPC
+      CidrBlock: 10.0.10.0/24
+      AvailabilityZone: ap-northeast-1a
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-private-subnet-a
+
+  PrivateSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref MainVPC
+      CidrBlock: 10.0.11.0/24
+      AvailabilityZone: ap-northeast-1c
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-private-subnet-c
