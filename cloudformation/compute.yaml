@@ -100,5 +100,11 @@ Resources:
       DefaultActions:
         - Type: forward
           TargetGroupArn: !Ref ALBTargetGroup
+          
+Outputs:
+  EC2SecurityGroupId:
+    Value: !Ref EC2SecurityGroup
+    Export:
+      Name: aws-iac-study-ec2-sg-id
 
     
