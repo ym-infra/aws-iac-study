@@ -128,3 +128,13 @@ Outputs:
     Value: !Ref PublicSubnetC
     Export:
       Name: aws-iac-study-public-subnet-c-id
+
+  PrivateSubnetAId:
+    Value: !Ref PrivateSubnetA
+    Export:
+      Name: aws-iac-study-private-subnet-a-id
+
+  PrivateSubnetCId:
+    Value: !Ref PrivateSubnetC
+    Export:
+      Name: aws-iac-study-private-subnet-c-id
