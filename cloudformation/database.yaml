@@ -3,3 +3,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: Create database infrastructure for aws-iac-study
 
 Resources:
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for RDS
+      VpcId: !ImportValue aws-iac-study-vpc-id
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !ImportValue aws-iac-study-ec2-sg-id
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-rds-sg
+          
