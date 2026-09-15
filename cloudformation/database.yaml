@@ -16,4 +16,33 @@ Resources:
       Tags:
         - Key: Name
           Value: aws-iac-study-rds-sg
-          
+
+  DBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnet group for RDS
+      SubnetIds:
+        - !ImportValue aws-iac-study-private-subnet-a-id
+        - !ImportValue aws-iac-study-private-subnet-c-id
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-db-subnet-group
+
+  RDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceIdentifier: aws-iac-study-db
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: 20
+      StorageType: gp3
+
+      MasterUsername: admin
+      MasterUserPassword: change-me-later
+
+      DBSubnetGroupName: !Ref DBSubnetGroup
+      VPCSecurityGroups:
+        - !Ref RDSSecurityGroup
+
+      MultiAZ: true
+      PubliclyAccessible: false
