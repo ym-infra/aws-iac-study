@@ -113,3 +113,18 @@ Resources:
     Properties:
       SubnetId: !Ref PrivateSubnetC
       RouteTableId: !Ref PrivateRouteTable
+Outputs:
+  VpcId:
+    Value: !Ref MainVPC
+    Export:
+      Name: aws-iac-study-vpc-id
+
+  PublicSubnetAId:
+    Value: !Ref PublicSubnetA
+    Export:
+      Name: aws-iac-study-public-subnet-a-id
+
+  PublicSubnetCId:
+    Value: !Ref PublicSubnetC
+    Export:
+      Name: aws-iac-study-public-subnet-c-id
