@@ -70,5 +70,24 @@ Resources:
         - Key: Name
           Value: aws-iac-study-alb
 
+  ALBTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Name: aws-iac-study-tg
+      Port: 80
+      Protocol: HTTP
+      VpcId: !ImportValue aws-iac-study-vpc-id
+      TargetType: instance
+      Targets:
+        - Id: !Ref EC2InstanceA
+          Port: 80
+        - Id: !Ref EC2InstanceC
+          Port: 80
+      HealthCheckProtocol: HTTP
+      HealthCheckPath: /
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-tg
+
 
     
