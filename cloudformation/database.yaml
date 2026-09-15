@@ -2,6 +2,12 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Description: Create database infrastructure for aws-iac-study
 
+Parameters:
+  DBMasterPassword:
+    Type: String
+    NoEcho: true
+    Description: Master password for RDS
+
 Resources:
   RDSSecurityGroup:
     Type: AWS::EC2::SecurityGroup
@@ -38,7 +44,7 @@ Resources:
       StorageType: gp3
 
       MasterUsername: admin
-      MasterUserPassword: change-me-later
+      MasterUserPassword: !Ref DBMasterPassword
 
       DBSubnetGroupName: !Ref DBSubnetGroup
       VPCSecurityGroups:
