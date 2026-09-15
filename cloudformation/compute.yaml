@@ -8,3 +8,11 @@ Resources:
     Properties:
       GroupDescription: Security group for ALB
       VpcId: !ImportValue aws-iac-study-vpc-id
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-alb-sg
