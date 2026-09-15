@@ -30,3 +30,30 @@ Resources:
       Tags:
         - Key: Name
           Value: aws-iac-study-ec2-sg
+
+  EC2InstanceA:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-xxxxxxxxxxxxxxxxx
+      InstanceType: t3.micro
+      SubnetId: !ImportValue aws-iac-study-public-subnet-a-id
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-ec2-a
+
+  EC2InstanceC:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-xxxxxxxxxxxxxxxxx
+      InstanceType: t3.micro
+      SubnetId: !ImportValue aws-iac-study-public-subnet-c-id
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+      Tags:
+        - Key: Name
+          Value: aws-iac-study-ec2-c
+
+
+    
